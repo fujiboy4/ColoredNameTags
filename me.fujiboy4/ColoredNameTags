@@ -1,0 +1,254 @@
+package me.fujiboy4;
+
+import java.util.Random;
+
+import net.minecraft.server.v1_7_R1.WorldServer;
+
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Color;
+import org.bukkit.Location;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import org.bukkit.event.entity.PlayerLeashEntityEvent;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.permissions.Permission;
+import org.bukkit.plugin.PluginManager;
+import org.bukkit.plugin.java.JavaPlugin;
+
+public class ColoredNameTags<EnitiyTracker> extends JavaPlugin {
+
+	@Override
+	public void onEnable() {
+	}
+
+	@Override
+	public void onDisable() {
+	}
+
+	public boolean onCommand(CommandSender sender, Command cmd, String label,
+			String[] args) {
+		if (cmd.getName().equals("cnt")) {
+			if (args.length == 0) {
+				Player player = (Player) sender;
+				player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD
+						+ "ColoredNameTags");
+				player.sendMessage(" ");
+				player.sendMessage(ChatColor.GRAY + "Version: 1.0.6");
+				player.sendMessage(ChatColor.GRAY + "Developer: fujiboy4");
+				player.sendMessage(ChatColor.GRAY + "Commands: /CNT Help");
+
+				return true;
+			} else {
+				if (args[0].equals("help")) {
+					Player player = (Player) sender;
+					player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD
+							+ "Commands:");
+					player.sendMessage(" ");
+					player.sendMessage(ChatColor.GRAY + "/CNT  -  Main Command");
+					player.sendMessage(ChatColor.GRAY
+							+ "/CNT Help  -  Commands Page");
+					player.sendMessage(ChatColor.GRAY
+							+ "/CNT Colors  -  Colors Page");
+					return true;
+				} else {
+					if (args[0].equals("colors")) {
+						Player player = (Player) sender;
+						player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD
+								+ "Colors:");
+						player.sendMessage(" ");
+						player.sendMessage(ChatColor.GRAY + "/CNT Black");
+						player.sendMessage(ChatColor.GRAY + "/CNT DarkBlue");
+						player.sendMessage(ChatColor.GRAY + "/CNT DarkGreen");
+						player.sendMessage(ChatColor.GRAY + "/CNT DarkAqua");
+						player.sendMessage(ChatColor.GRAY + "/CNT DarkRed");
+						player.sendMessage(ChatColor.GRAY + "/CNT DarkPurple");
+						player.sendMessage(ChatColor.GRAY + "/CNT Gold");
+						player.sendMessage(ChatColor.GRAY + "/CNT Gray");
+						player.sendMessage(ChatColor.GOLD + "Next page >> "
+								+ ChatColor.RED + "/cnt colors2");
+						return true;
+					} else {
+						if (args[0].equals("colors2")) {
+							Player player = (Player) sender;
+							player.sendMessage(ChatColor.GOLD + " "
+									+ ChatColor.BOLD + "Colors 2:");
+							player.sendMessage("");
+							player.sendMessage(ChatColor.GRAY + "/CNT DarkGray");
+							player.sendMessage(ChatColor.GRAY + "/CNT Blue");
+							player.sendMessage(ChatColor.GRAY + "/CNT Green");
+							player.sendMessage(ChatColor.GRAY + "/CNT Aqua");
+							player.sendMessage(ChatColor.GRAY + "/CNT Red");
+							player.sendMessage(ChatColor.GRAY + "/CNT Pink");
+							player.sendMessage(ChatColor.GRAY + "/CNT Yellow");
+							player.sendMessage(ChatColor.GRAY + "/CNT Reset");
+							return true;
+						} else {
+							if (args[0].equals("black")) {
+								Player player = (Player) sender;
+								player.setDisplayName(ChatColor.BLACK
+										+ player.getName() + ChatColor.RESET);
+								player.sendMessage(ChatColor.GOLD + "Complete!");
+								return true;
+							} else {
+								if (args[0].equals("darkblue")) {
+									Player player = (Player) sender;
+									player.setDisplayName(ChatColor.DARK_BLUE
+											+ player.getName()
+											+ ChatColor.RESET);
+									player.sendMessage(ChatColor.GOLD
+											+ "Complete!");
+									return true;
+								} else {
+									if (args[0].equals("darkgreen")) {
+										Player player = (Player) sender;
+										player.setDisplayName(ChatColor.DARK_GREEN
+												+ player.getName()
+												+ ChatColor.RESET);
+										player.sendMessage(ChatColor.GOLD
+												+ "Complete!");
+										return true;
+									} else {
+										if (args[0].equals("darkred")) {
+											Player player = (Player) sender;
+											player.setDisplayName(ChatColor.DARK_RED
+													+ player.getName()
+													+ ChatColor.RESET);
+											player.sendMessage(ChatColor.GOLD
+													+ "Complete!");
+											return true;
+										} else {
+											if (args[0].equals("darkpurple")) {
+												Player player = (Player) sender;
+												player.setDisplayName(ChatColor.DARK_PURPLE
+														+ player.getName()
+														+ ChatColor.RESET);
+												player.sendMessage(ChatColor.GOLD
+														+ "Complete!");
+												return true;
+											} else {
+												if (args[0].equals("gold")) {
+													Player player = (Player) sender;
+													player.setDisplayName(ChatColor.GOLD
+															+ player.getName()
+															+ ChatColor.RESET);
+													player.sendMessage(ChatColor.GOLD
+															+ "Complete!");
+													return true;
+												} else {
+													if (args[0].equals("gray")) {
+														Player player = (Player) sender;
+														player.setDisplayName(ChatColor.GRAY
+																+ player.getName()
+																+ ChatColor.RESET);
+														player.sendMessage(ChatColor.GOLD
+																+ "Complete!");
+														return true;
+													} else {
+														if (args[0]
+																.equals("darkgray")) {
+															Player player = (Player) sender;
+															player.setDisplayName(ChatColor.DARK_GRAY
+																	+ player.getName()
+																	+ ChatColor.RESET);
+															player.sendMessage(ChatColor.GOLD
+																	+ "Complete!");
+															return true;
+														} else {
+															if (args[0]
+																	.equals("blue")) {
+																Player player = (Player) sender;
+																player.setDisplayName(ChatColor.BLUE
+																		+ player.getName()
+																		+ ChatColor.RESET);
+																player.sendMessage(ChatColor.GOLD
+																		+ "Complete!");
+																return true;
+															} else {
+																if (args[0]
+																		.equals("green")) {
+																	Player player = (Player) sender;
+																	player.setDisplayName(ChatColor.GREEN
+																			+ player.getName()
+																			+ ChatColor.RESET);
+																	player.sendMessage(ChatColor.GOLD
+																			+ "Complete!");
+																	return true;
+																} else {
+																	if (args[0]
+																			.equals("aqua")) {
+																		Player player = (Player) sender;
+																		player.setDisplayName(ChatColor.AQUA
+																				+ player.getName()
+																				+ ChatColor.RESET);
+																		player.sendMessage(ChatColor.GOLD
+																				+ "Complete!");
+																		return true;
+																	} else {
+																		if (args[0]
+																				.equals("reset")) {
+																			Player player = (Player) sender;
+																			player.setDisplayName(ChatColor.RESET
+																					+ player.getName()
+																					+ ChatColor.RESET);
+																			player.sendMessage(ChatColor.GOLD
+																					+ "Complete!");
+																			return true;
+																		} else {
+																			if (args[0]
+																					.equals("pink")) {
+																				Player player = (Player) sender;
+																				player.setDisplayName(ChatColor.LIGHT_PURPLE
+																						+ player.getName()
+																						+ ChatColor.RESET);
+																				player.sendMessage(ChatColor.GOLD
+																						+ "Complete!");
+																				return true;
+																			} else {
+																				if (args[0]
+																						.equals("yellow")) {
+																					Player player = (Player) sender;
+																					player.setDisplayName(ChatColor.YELLOW
+																							+ player.getName()
+																							+ ChatColor.RESET);
+																					player.sendMessage(ChatColor.GOLD
+																							+ "Complete!");
+																					return true;
+																				} else {
+																					if (args[0]
+																							.equals("red")) {
+																						Player player = (Player) sender;
+																						player.setDisplayName(ChatColor.RED
+																								+ player.getName()
+																								+ ChatColor.RESET);
+																						player.sendMessage(ChatColor.GOLD
+																								+ "Complete!");
+																						return true;
+
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+
+														}
+
+														return false;
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		return false;
+	}
+}
