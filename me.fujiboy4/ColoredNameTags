@@ -29,225 +29,183 @@ public class ColoredNameTags<EnitiyTracker> extends JavaPlugin {
 
 	public boolean onCommand(CommandSender sender, Command cmd, String label,
 			String[] args) {
-		if (cmd.getName().equals("cnt")) {
+
+		if (cmd.getName().equalsIgnoreCase("cnt")) {
+			Player player = (Player) sender;
 			if (args.length == 0) {
-				Player player = (Player) sender;
+				for (int index = 0; index < 20; index++) {
+					player.sendMessage(" ");
+				}
 				player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD
 						+ "ColoredNameTags");
 				player.sendMessage(" ");
-				player.sendMessage(ChatColor.GRAY + "Version: 1.0.6");
+				player.sendMessage(ChatColor.GRAY + "Version: 1.1.0");
 				player.sendMessage(ChatColor.GRAY + "Developer: fujiboy4");
 				player.sendMessage(ChatColor.GRAY + "Commands: /CNT Help");
 
-				return true;
 			} else {
-				if (args[0].equals("help")) {
-					Player player = (Player) sender;
+				if (args[0].equalsIgnoreCase("help")) {
+					for (int index = 0; index < 20; index++) {
+						player.sendMessage(" ");
+					}
 					player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD
 							+ "Commands:");
 					player.sendMessage(" ");
 					player.sendMessage(ChatColor.GRAY + "/CNT  -  Main Command");
 					player.sendMessage(ChatColor.GRAY
-							+ "/CNT Help  -  Commands Page");
+							+ "/CNT Help  -  Com mands Page");
 					player.sendMessage(ChatColor.GRAY
 							+ "/CNT Colors  -  Colors Page");
-					return true;
-				} else {
-					if (args[0].equals("colors")) {
-						Player player = (Player) sender;
-						player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD
-								+ "Colors:");
+					player.sendMessage(ChatColor.RED + "Experimental: " + ChatColor.GRAY + "/CNT Super");
+				} else if (args[0].equalsIgnoreCase("colors")) {
+					for (int index = 0; index < 20; index++) {
 						player.sendMessage(" ");
-						player.sendMessage(ChatColor.GRAY + "/CNT Black");
-						player.sendMessage(ChatColor.GRAY + "/CNT DarkBlue");
-						player.sendMessage(ChatColor.GRAY + "/CNT DarkGreen");
-						player.sendMessage(ChatColor.GRAY + "/CNT DarkAqua");
-						player.sendMessage(ChatColor.GRAY + "/CNT DarkRed");
-						player.sendMessage(ChatColor.GRAY + "/CNT DarkPurple");
-						player.sendMessage(ChatColor.GRAY + "/CNT Gold");
-						player.sendMessage(ChatColor.GRAY + "/CNT Gray");
-						player.sendMessage(ChatColor.GOLD + "Next page >> "
-								+ ChatColor.RED + "/cnt colors2");
-						return true;
-					} else {
-						if (args[0].equals("colors2")) {
-							Player player = (Player) sender;
-							player.sendMessage(ChatColor.GOLD + " "
-									+ ChatColor.BOLD + "Colors 2:");
-							player.sendMessage("");
-							player.sendMessage(ChatColor.GRAY + "/CNT DarkGray");
-							player.sendMessage(ChatColor.GRAY + "/CNT Blue");
-							player.sendMessage(ChatColor.GRAY + "/CNT Green");
-							player.sendMessage(ChatColor.GRAY + "/CNT Aqua");
-							player.sendMessage(ChatColor.GRAY + "/CNT Red");
-							player.sendMessage(ChatColor.GRAY + "/CNT Pink");
-							player.sendMessage(ChatColor.GRAY + "/CNT Yellow");
-							player.sendMessage(ChatColor.GRAY + "/CNT Reset");
-							return true;
-						} else {
-							if (args[0].equals("black")) {
-								Player player = (Player) sender;
-								player.setDisplayName(ChatColor.BLACK
-										+ player.getName() + ChatColor.RESET);
-								player.sendMessage(ChatColor.GOLD + "Complete!");
-								return true;
-							} else {
-								if (args[0].equals("darkblue")) {
-									Player player = (Player) sender;
-									player.setDisplayName(ChatColor.DARK_BLUE
-											+ player.getName()
-											+ ChatColor.RESET);
-									player.sendMessage(ChatColor.GOLD
-											+ "Complete!");
-									return true;
-								} else {
-									if (args[0].equals("darkgreen")) {
-										Player player = (Player) sender;
-										player.setDisplayName(ChatColor.DARK_GREEN
-												+ player.getName()
-												+ ChatColor.RESET);
-										player.sendMessage(ChatColor.GOLD
-												+ "Complete!");
-										return true;
-									} else {
-										if (args[0].equals("darkred")) {
-											Player player = (Player) sender;
-											player.setDisplayName(ChatColor.DARK_RED
-													+ player.getName()
-													+ ChatColor.RESET);
-											player.sendMessage(ChatColor.GOLD
-													+ "Complete!");
-											return true;
-										} else {
-											if (args[0].equals("darkpurple")) {
-												Player player = (Player) sender;
-												player.setDisplayName(ChatColor.DARK_PURPLE
-														+ player.getName()
-														+ ChatColor.RESET);
-												player.sendMessage(ChatColor.GOLD
-														+ "Complete!");
-												return true;
-											} else {
-												if (args[0].equals("gold")) {
-													Player player = (Player) sender;
-													player.setDisplayName(ChatColor.GOLD
-															+ player.getName()
-															+ ChatColor.RESET);
-													player.sendMessage(ChatColor.GOLD
-															+ "Complete!");
-													return true;
-												} else {
-													if (args[0].equals("gray")) {
-														Player player = (Player) sender;
-														player.setDisplayName(ChatColor.GRAY
-																+ player.getName()
-																+ ChatColor.RESET);
-														player.sendMessage(ChatColor.GOLD
-																+ "Complete!");
-														return true;
-													} else {
-														if (args[0]
-																.equals("darkgray")) {
-															Player player = (Player) sender;
-															player.setDisplayName(ChatColor.DARK_GRAY
-																	+ player.getName()
-																	+ ChatColor.RESET);
-															player.sendMessage(ChatColor.GOLD
-																	+ "Complete!");
-															return true;
-														} else {
-															if (args[0]
-																	.equals("blue")) {
-																Player player = (Player) sender;
-																player.setDisplayName(ChatColor.BLUE
-																		+ player.getName()
-																		+ ChatColor.RESET);
-																player.sendMessage(ChatColor.GOLD
-																		+ "Complete!");
-																return true;
-															} else {
-																if (args[0]
-																		.equals("green")) {
-																	Player player = (Player) sender;
-																	player.setDisplayName(ChatColor.GREEN
-																			+ player.getName()
-																			+ ChatColor.RESET);
-																	player.sendMessage(ChatColor.GOLD
-																			+ "Complete!");
-																	return true;
-																} else {
-																	if (args[0]
-																			.equals("aqua")) {
-																		Player player = (Player) sender;
-																		player.setDisplayName(ChatColor.AQUA
-																				+ player.getName()
-																				+ ChatColor.RESET);
-																		player.sendMessage(ChatColor.GOLD
-																				+ "Complete!");
-																		return true;
-																	} else {
-																		if (args[0]
-																				.equals("reset")) {
-																			Player player = (Player) sender;
-																			player.setDisplayName(ChatColor.RESET
-																					+ player.getName()
-																					+ ChatColor.RESET);
-																			player.sendMessage(ChatColor.GOLD
-																					+ "Complete!");
-																			return true;
-																		} else {
-																			if (args[0]
-																					.equals("pink")) {
-																				Player player = (Player) sender;
-																				player.setDisplayName(ChatColor.LIGHT_PURPLE
-																						+ player.getName()
-																						+ ChatColor.RESET);
-																				player.sendMessage(ChatColor.GOLD
-																						+ "Complete!");
-																				return true;
-																			} else {
-																				if (args[0]
-																						.equals("yellow")) {
-																					Player player = (Player) sender;
-																					player.setDisplayName(ChatColor.YELLOW
-																							+ player.getName()
-																							+ ChatColor.RESET);
-																					player.sendMessage(ChatColor.GOLD
-																							+ "Complete!");
-																					return true;
-																				} else {
-																					if (args[0]
-																							.equals("red")) {
-																						Player player = (Player) sender;
-																						player.setDisplayName(ChatColor.RED
-																								+ player.getName()
-																								+ ChatColor.RESET);
-																						player.sendMessage(ChatColor.GOLD
-																								+ "Complete!");
-																						return true;
-
-																					}
-																				}
-																			}
-																		}
-																	}
-																}
-															}
-
-														}
-
-														return false;
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
 					}
+					player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD
+							+ "Colors:");
+					player.sendMessage(" ");
+					player.sendMessage(ChatColor.GRAY
+							+ "/CNT Black          /CNT DarkGray");
+					player.sendMessage(ChatColor.GRAY
+							+ "/CNT DarkBlue       /CNT Blue");
+					player.sendMessage(ChatColor.GRAY
+							+ "/CNT DarkGreen      /CNT Green");
+					player.sendMessage(ChatColor.GRAY
+							+ "/CNT DarkAqua       /CNT Aqua");
+					player.sendMessage(ChatColor.GRAY
+							+ "/CNT DarkRed        /CNT Red");
+					player.sendMessage(ChatColor.GRAY
+							+ "/CNT DarkPurple     /CNT Pink");
+					player.sendMessage(ChatColor.GRAY
+							+ "/CNT Gold           /CNT Yellow");
+					player.sendMessage(ChatColor.GRAY
+							+ "/CNT Gray           /CNT Reset");
+				} else if (args[0].equalsIgnoreCase("black")) {
+					for (int index = 0; index < 20; index++) {
+						player.sendMessage(" ");
+					}
+					player.setDisplayName(ChatColor.BLACK + player.getName()
+							+ ChatColor.RESET);
+					player.sendMessage(ChatColor.GOLD + "Complete!");
+				} else if (args[0].equalsIgnoreCase("darkblue")) {
+					
+					player.setDisplayName(ChatColor.DARK_BLUE
+							+ player.getName() + ChatColor.RESET);
+					player.sendMessage(ChatColor.GOLD + "Complete!");
+				} else if (args[0].equalsIgnoreCase("darkgreen")) {
+					for (int index = 0; index < 20; index++) {
+						player.sendMessage(" ");
+					}
+					player.setDisplayName(ChatColor.DARK_GREEN
+							+ player.getName() + ChatColor.RESET);
+					player.sendMessage(ChatColor.GOLD + "Complete!");
+				} else if (args[0].equalsIgnoreCase("darkred")) {
+					for (int index = 0; index < 20; index++) {
+						player.sendMessage(" ");
+					}
+					player.setDisplayName(ChatColor.DARK_RED + player.getName()
+							+ ChatColor.RESET);
+					player.sendMessage(ChatColor.GOLD + "Complete!");
+				} else if (args[0].equalsIgnoreCase("darkpurple")) {
+					for (int index = 0; index < 20; index++) {
+						player.sendMessage(" ");
+					}
+					player.setDisplayName(ChatColor.DARK_PURPLE
+							+ player.getName() + ChatColor.RESET);
+					player.sendMessage(ChatColor.GOLD + "Complete!");
+
+				} else if (args[0].equalsIgnoreCase("gold")) {
+					for (int index = 0; index < 20; index++) {
+						player.sendMessage(" ");
+					}
+					player.setDisplayName(ChatColor.GOLD + player.getName()
+							+ ChatColor.RESET);
+					player.sendMessage(ChatColor.GOLD + "Complete!");
+				} else if (args[0].equalsIgnoreCase("gray")) {
+					for (int index = 0; index < 20; index++) {
+						player.sendMessage(" ");
+					}
+					player.setDisplayName(ChatColor.GRAY + player.getName()
+							+ ChatColor.RESET);
+					player.sendMessage(ChatColor.GOLD + "Complete!");
+				} else if (args[0].equalsIgnoreCase("darkgray")) {
+					for (int index = 0; index < 20; index++) {
+						player.sendMessage(" ");
+					}
+					player.setDisplayName(ChatColor.DARK_GRAY
+							+ player.getName() + ChatColor.RESET);
+					player.sendMessage(ChatColor.GOLD + "Complete!");
+				} else if (args[0].equalsIgnoreCase("blue")) {
+					for (int index = 0; index < 20; index++) {
+						player.sendMessage(" ");
+					}
+					player.setDisplayName(ChatColor.BLUE + player.getName()
+							+ ChatColor.RESET);
+					player.sendMessage(ChatColor.GOLD + "Complete!");
+				} else if (args[0].equalsIgnoreCase("green")) {
+					for (int index = 0; index < 20; index++) {
+						player.sendMessage(" ");
+					}
+					player.setDisplayName(ChatColor.GREEN + player.getName()
+							+ ChatColor.RESET);
+					player.sendMessage(ChatColor.GOLD + "Complete!");
+				} else if (args[0].equalsIgnoreCase("aqua")) {
+					for (int index = 0; index < 20; index++) {
+						player.sendMessage(" ");
+					}
+					player.setDisplayName(ChatColor.AQUA + player.getName()
+							+ ChatColor.RESET);
+					player.sendMessage(ChatColor.GOLD + "Complete!");
+				} else if (args[0].equalsIgnoreCase("reset")) {
+					for (int index = 0; index < 20; index++) {
+						player.sendMessage(" ");
+					}
+					player.setDisplayName(ChatColor.RESET + player.getName()
+							+ ChatColor.RESET);
+					player.sendMessage(ChatColor.GOLD + "Complete!");
+				} else if (args[0].equalsIgnoreCase("pink")) {
+					for (int index = 0; index < 20; index++) {
+						player.sendMessage(" ");
+					}
+					player.setDisplayName(ChatColor.LIGHT_PURPLE
+							+ player.getName() + ChatColor.RESET);
+					player.sendMessage(ChatColor.GOLD + "Complete!");
+				} else if (args[0].equalsIgnoreCase("yellow")) {
+					for (int index = 0; index < 20; index++) {
+						player.sendMessage(" ");
+					}
+					player.setDisplayName(ChatColor.YELLOW + player.getName()
+							+ ChatColor.RESET);
+					player.sendMessage(ChatColor.GOLD + "Complete!");
+				} else if (args[0].equalsIgnoreCase("red")) {
+					for (int index = 0; index < 20; index++) {
+						player.sendMessage(" ");
+					}
+					player.setDisplayName(ChatColor.RED + player.getName()
+							+ ChatColor.RESET);
+					player.sendMessage(ChatColor.GOLD + "Complete!");
+				}else if (args[0].equalsIgnoreCase("super")) {
+					for (int index = 0; index < 20; index++) {
+						player.sendMessage(" ");
+					}
+					player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "Super Commands:");
+				    player.sendMessage(ChatColor.GRAY + "/CNT SuperGreen");
+				    player.sendMessage(ChatColor.GRAY + "/CNT SuperRed");
+				}else if (args[0].equalsIgnoreCase("supergreen")) {
+					for (int index = 0; index < 20; index++) {
+						player.sendMessage(" ");
+					}
+					player.sendMessage(ChatColor.GOLD + "Complete:" + ChatColor.RED + " Warning, could cause lag!");
+					player.setDisplayName(ChatColor.GREEN + "" + ChatColor.MAGIC + "" + ChatColor.BOLD + "" + ChatColor.STRIKETHROUGH + player.getName() + ChatColor.RESET);
+				}else if (args[0].equalsIgnoreCase("superred")) {
+					for (int index = 0; index < 20; index++) {
+						player.sendMessage(" ");
+					}
+					player.sendMessage(ChatColor.GOLD + "Complete:" + ChatColor.RED + " Warning, could cause lag!");
+					player.setDisplayName(ChatColor.RED + "" + ChatColor.MAGIC + "" + ChatColor.BOLD + "" + ChatColor.STRIKETHROUGH + player.getName() + ChatColor.RESET);
 				}
 			}
+			return true;
 		}
 		return false;
 	}
