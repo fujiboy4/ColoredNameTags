@@ -1,0 +1,549 @@
+package me.fujiboy4;
+
+import java.util.Random;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Color;
+import org.bukkit.Location;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import org.bukkit.event.entity.PlayerLeashEntityEvent;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.permissions.Permission;
+import org.bukkit.plugin.PluginManager;
+import org.bukkit.plugin.java.JavaPlugin;
+
+public class ColoredNameTags<EnitiyTracker> extends JavaPlugin {
+
+	public Permission playerPermission = new Permission("colorednametags.color");
+
+	@Override
+	public void onEnable() {
+		getLogger().info("+++++++++++++++++++");
+		getLogger().info("+                 +");
+		getLogger().info("+ ColoredNameTags +");
+		getLogger().info("+                 +");
+		getLogger().info("+++++++++++++++++++");
+	}
+
+	@Override
+	public void onDisable() {
+	}
+
+	public boolean onCommand(CommandSender sender, Command cmd, String label,
+			String[] args) {
+
+		if (cmd.getName().equalsIgnoreCase("cnt")) {
+			Player player = (Player) sender;
+			if (args.length == 0) {
+				for (int index = 0; index < 20; index++) {
+					player.sendMessage(" ");
+				}
+				player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD
+						+ "ColoredNameTags");
+				player.sendMessage(" ");
+				player.sendMessage(ChatColor.GRAY + "Version: SKrafty 1.3.0");
+				player.sendMessage(ChatColor.GRAY + "Developer: fujiboy4 "
+						+ ChatColor.AQUA + "- Hey Guys! :D");
+				player.sendMessage(ChatColor.GRAY + "Information: /cnt info");
+				player.sendMessage(ChatColor.GRAY + "Commands: /cnt help");
+
+			} else {
+				if (args[0].equalsIgnoreCase("help")) {
+					if (player.hasPermission("colorednametags.color")) {
+						for (int index = 0; index < 20; index++) {
+							player.sendMessage(" ");
+						}
+						player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD
+								+ "Commands:");
+						player.sendMessage(" ");
+						player.sendMessage(ChatColor.GRAY
+								+ "/cnt  -  Main Command");
+						player.sendMessage(ChatColor.GRAY
+								+ "/cnt help  -  Commands Page");
+						player.sendMessage(ChatColor.GRAY
+								+ "/cnt colors  -  Colors Page");
+					} else if (!player.hasPermission("colorednametags.color")) {
+						player.sendMessage("§6§l[§eColoredNameTags§6§l] §cError: §4You do not have permission!");
+					}
+
+				} else if (args[0].equalsIgnoreCase("colors")) {
+					if (player.hasPermission("colorednametags.color")) {
+						for (int index = 0; index < 20; index++) {
+							player.sendMessage(" ");
+						}
+						player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD
+								+ "Colors:");
+						player.sendMessage(" ");
+						player.sendMessage(ChatColor.BLACK + "/cnt black");
+						player.sendMessage(ChatColor.DARK_BLUE
+								+ "/cnt darkblue");
+						player.sendMessage(ChatColor.DARK_GREEN
+								+ "/cnt darkgreen");
+						player.sendMessage(ChatColor.DARK_AQUA
+								+ "/cnt darkaqua");
+						player.sendMessage(ChatColor.DARK_RED + "/cnt darkred");
+						player.sendMessage(ChatColor.DARK_PURPLE
+								+ "/cnt darkpurple");
+						player.sendMessage(ChatColor.GOLD + "/cnt gold");
+						player.sendMessage(ChatColor.GRAY + "/cnt gray");
+						player.sendMessage(ChatColor.DARK_GRAY
+								+ "/cnt darkgray");
+						player.sendMessage(ChatColor.BLUE + "/cnt blue");
+						player.sendMessage(ChatColor.GREEN + "/cnt green");
+						player.sendMessage(ChatColor.AQUA + "/cnt aqua");
+						player.sendMessage(ChatColor.RED + "/cnt red");
+						player.sendMessage(ChatColor.LIGHT_PURPLE + "/cnt pink");
+						player.sendMessage(ChatColor.YELLOW + "/cnt yellow");
+						player.sendMessage(ChatColor.RESET + "/cnt reset");
+					} else if (!player.hasPermission("colorednametags.color")) {
+						player.sendMessage("§6§l[§eColoredNameTags§6§l] §cError: §4You do not have permission!");
+					}
+				} else if (args[0].equalsIgnoreCase("darkaqua")) {
+					if (player.hasPermission("colorednametags.color")) {
+						for (int index = 0; index < 20; index++) {
+							player.sendMessage(" ");
+						}
+						player.setPlayerListName(ChatColor.DARK_AQUA
+								+ player.getName() + ChatColor.RESET);
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams add dark_aqua");
+						Bukkit.getServer()
+								.dispatchCommand(
+										Bukkit.getServer().getConsoleSender(),
+										"scoreboard teams option dark_aqua color dark_aqua");
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams join dark_aqua "
+										+ player.getName() + "");
+						player.sendMessage(ChatColor.GOLD
+								+ "§6§l[§eColoredNameTags§6§l] §6Complete!");
+					} else if (!player.hasPermission("colorednametags.color")) {
+						player.sendMessage("§6§l[§eColoredNameTags§6§l] §cError: §4You do not have permission!");
+					}
+				} else if (args[0].equalsIgnoreCase("black")) {
+					if (player.hasPermission("colorednametags.color")) {
+						for (int index = 0; index < 20; index++) {
+							player.sendMessage(" ");
+						}
+						player.setPlayerListName(ChatColor.BLACK
+								+ player.getName() + ChatColor.RESET);
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams add black");
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams option black color black");
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams join black "
+										+ player.getName() + "");
+						player.sendMessage(ChatColor.GOLD
+								+ "§6§l[§eColoredNameTags§6§l] §6Complete!");
+					} else if (!player.hasPermission("colorednametags.color")) {
+						player.sendMessage("§6§l[§eColoredNameTags§6§l] §cError: §4You do not have permission!");
+					}
+
+				} else if (args[0].equalsIgnoreCase("darkblue")) {
+					if (player.hasPermission("colorednametags.color")) {
+						for (int index = 0; index < 20; index++) {
+							player.sendMessage(" ");
+						}
+						player.setPlayerListName(ChatColor.DARK_BLUE
+								+ player.getName() + ChatColor.RESET);
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams add dark_blue");
+						Bukkit.getServer()
+								.dispatchCommand(
+										Bukkit.getServer().getConsoleSender(),
+										"scoreboard teams option dark_blue color dark_blue");
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams join dark_blue "
+										+ player.getName() + "");
+						player.sendMessage(ChatColor.GOLD
+								+ "§6§l[§eColoredNameTags§6§l] §6Complete!");
+					} else if (!player.hasPermission("colorednametags.color")) {
+						player.sendMessage("§6§l[§eColoredNameTags§6§l] §cError: §4You do not have permission!");
+					}
+
+				} else if (args[0].equalsIgnoreCase("darkgreen")) {
+					if (player.hasPermission("colorednametags.color")) {
+						for (int index = 0; index < 20; index++) {
+							player.sendMessage(" ");
+						}
+						player.setPlayerListName(ChatColor.DARK_GREEN
+								+ player.getName() + ChatColor.RESET);
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams add dark_green");
+						Bukkit.getServer()
+								.dispatchCommand(
+										Bukkit.getServer().getConsoleSender(),
+										"scoreboard teams option dark_green color dark_green");
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams join dark_green "
+										+ player.getName() + "");
+						player.sendMessage(ChatColor.GOLD
+								+ "§6§l[§eColoredNameTags§6§l] §6Complete!");
+					} else if (!player.hasPermission("colorednametags.color")) {
+						player.sendMessage("§6§l[§eColoredNameTags§6§l] §cError: §4You do not have permission!");
+					}
+				} else if (args[0].equalsIgnoreCase("darkred")) {
+					if (player.hasPermission("colorednametags.color")) {
+						for (int index = 0; index < 20; index++) {
+							player.sendMessage(" ");
+						}
+						player.setPlayerListName(ChatColor.DARK_RED
+								+ player.getName() + ChatColor.RESET);
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams add dark_red");
+						Bukkit.getServer()
+								.dispatchCommand(
+										Bukkit.getServer().getConsoleSender(),
+										"scoreboard teams option dark_red color dark_red");
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams join dark_red "
+										+ player.getName() + "");
+						player.sendMessage(ChatColor.GOLD
+								+ "§6§l[§eColoredNameTags§6§l] §6Complete!");
+					} else if (!player.hasPermission("colorednametags.color")) {
+						player.sendMessage("§6§l[§eColoredNameTags§6§l] §cError: §4You do not have permission!");
+					}
+				} else if (args[0].equalsIgnoreCase("darkpurple")) {
+					if (player.hasPermission("colorednametags.color")) {
+						for (int index = 0; index < 20; index++) {
+							player.sendMessage(" ");
+						}
+						player.setPlayerListName(ChatColor.DARK_PURPLE
+								+ player.getName() + ChatColor.RESET);
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams add dark_purple");
+						Bukkit.getServer()
+								.dispatchCommand(
+										Bukkit.getServer().getConsoleSender(),
+										"scoreboard teams option dark_purple color dark_purple");
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams join dark_purple "
+										+ player.getName() + "");
+						player.sendMessage(ChatColor.GOLD
+								+ "§6§l[§eColoredNameTags§6§l] §6Complete!");
+					} else if (!player.hasPermission("colorednametags.color")) {
+						player.sendMessage("§6§l[§eColoredNameTags§6§l] §cError: §4You do not have permission!");
+					}
+
+				} else if (args[0].equalsIgnoreCase("gold")) {
+					if (player.hasPermission("colorednametags.color")) {
+						for (int index = 0; index < 20; index++) {
+							player.sendMessage(" ");
+						}
+						player.setPlayerListName(ChatColor.GOLD
+								+ player.getName() + ChatColor.RESET);
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams add gold");
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams option gold color gold");
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams join gold "
+										+ player.getName() + "");
+						player.sendMessage(ChatColor.GOLD
+								+ "§6§l[§eColoredNameTags§6§l] §6Complete!");
+					} else if (!player.hasPermission("colorednametags.color")) {
+						player.sendMessage("§6§l[§eColoredNameTags§6§l] §cError: §4You do not have permission!");
+					}
+
+				} else if (args[0].equalsIgnoreCase("gray")) {
+					if (player.hasPermission("colorednametags.color")) {
+						for (int index = 0; index < 20; index++) {
+							player.sendMessage(" ");
+						}
+						player.setPlayerListName(ChatColor.GRAY
+								+ player.getName() + ChatColor.RESET);
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams add gray");
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams option gray color gray");
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams join gray "
+										+ player.getName() + "");
+						player.sendMessage(ChatColor.GOLD
+								+ "§6§l[§eColoredNameTags§6§l] §6Complete!");
+					} else if (!player.hasPermission("colorednametags.color")) {
+						player.sendMessage("§6§l[§eColoredNameTags§6§l] §cError: §4You do not have permission!");
+					}
+
+				} else if (args[0].equalsIgnoreCase("darkgray")) {
+					if (player.hasPermission("colorednametags.color")) {
+						for (int index = 0; index < 20; index++) {
+							player.sendMessage(" ");
+						}
+						player.setPlayerListName(ChatColor.DARK_GRAY
+								+ player.getName() + ChatColor.RESET);
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams add dark_gray");
+						Bukkit.getServer()
+								.dispatchCommand(
+										Bukkit.getServer().getConsoleSender(),
+										"scoreboard teams option dark_gray color dark_gray");
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams join dark_gray "
+										+ player.getName() + "");
+						player.sendMessage(ChatColor.GOLD
+								+ "§6§l[§eColoredNameTags§6§l] §6Complete!");
+					} else if (!player.hasPermission("colorednametags.color")) {
+						player.sendMessage("§6§l[§eColoredNameTags§6§l] §cError: §4You do not have permission!");
+					}
+
+				} else if (args[0].equalsIgnoreCase("blue")) {
+					if (player.hasPermission("colorednametags.color")) {
+						for (int index = 0; index < 20; index++) {
+							player.sendMessage(" ");
+						}
+						player.setPlayerListName(ChatColor.BLUE
+								+ player.getName() + ChatColor.RESET);
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams add blue");
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams option blue color blue");
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams join blue "
+										+ player.getName() + "");
+						player.sendMessage(ChatColor.GOLD
+								+ "§6§l[§eColoredNameTags§6§l] §6Complete!");
+					} else if (!player.hasPermission("colorednametags.color")) {
+						player.sendMessage("§6§l[§eColoredNameTags§6§l] §cError: §4You do not have permission!");
+					}
+				} else if (args[0].equalsIgnoreCase("green")) {
+					if (player.hasPermission("colorednametags.color")) {
+						for (int index = 0; index < 20; index++) {
+							player.sendMessage(" ");
+						}
+						player.setPlayerListName(ChatColor.GREEN
+								+ player.getName() + ChatColor.RESET);
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams add green");
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams option green color green");
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams join green "
+										+ player.getName() + "");
+						player.sendMessage(ChatColor.GOLD
+								+ "§6§l[§eColoredNameTags§6§l] §6Complete!");
+					} else if (!player.hasPermission("colorednametags.color")) {
+						player.sendMessage("§6§l[§eColoredNameTags§6§l] §cError: §4You do not have permission!");
+					}
+
+				} else if (args[0].equalsIgnoreCase("aqua")) {
+					if (player.hasPermission("colorednametags.color")) {
+						for (int index = 0; index < 20; index++) {
+							player.sendMessage(" ");
+						}
+						player.setPlayerListName(ChatColor.AQUA
+								+ player.getName() + ChatColor.RESET);
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams add aqua");
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams option aqua color aqua");
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams join aqua "
+										+ player.getName() + "");
+						player.sendMessage(ChatColor.GOLD
+								+ "§6§l[§eColoredNameTags§6§l] §6Complete!");
+					} else if (!player.hasPermission("colorednametags.color")) {
+						player.sendMessage("§6§l[§eColoredNameTags§6§l] §cError: §4You do not have permission!");
+					}
+
+				} else if (args[0].equalsIgnoreCase("reset")) {
+					if (player.hasPermission("colorednametags.color")) {
+						for (int index = 0; index < 20; index++) {
+							player.sendMessage(" ");
+						}
+						player.setPlayerListName(ChatColor.RESET
+								+ player.getName() + ChatColor.RESET);
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams add reset");
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams option reset color reset");
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams join reset "
+										+ player.getName() + "");
+						player.sendMessage(ChatColor.GOLD
+								+ "§6§l[§eColoredNameTags§6§l] §6Complete!");
+					} else if (!player.hasPermission("colorednametags.color")) {
+						player.sendMessage("§6§l[§eColoredNameTags§6§l] §cError: §4You do not have permission!");
+					}
+
+				} else if (args[0].equalsIgnoreCase("pink")) {
+					if (player.hasPermission("colorednametags.color")) {
+						for (int index = 0; index < 20; index++) {
+							player.sendMessage(" ");
+						}
+						player.setPlayerListName(ChatColor.LIGHT_PURPLE
+								+ player.getName() + ChatColor.RESET);
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams add light_purple");
+						Bukkit.getServer()
+								.dispatchCommand(
+										Bukkit.getServer().getConsoleSender(),
+										"scoreboard teams option light_purple color light_purple");
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams join light_purple "
+										+ player.getName() + "");
+						player.sendMessage(ChatColor.GOLD
+								+ "§6§l[§eColoredNameTags§6§l] §6Complete!");
+					} else if (!player.hasPermission("colorednametags.color")) {
+						player.sendMessage("§6§l[§eColoredNameTags§6§l] §cError: §4You do not have permission!");
+					}
+
+				} else if (args[0].equalsIgnoreCase("yellow")) {
+					if (player.hasPermission("colorednametags.color")) {
+						for (int index = 0; index < 20; index++) {
+							player.sendMessage(" ");
+						}
+						player.setPlayerListName(ChatColor.YELLOW
+								+ player.getName() + ChatColor.RESET);
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams add yellow");
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams option yellow color yellow");
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams join yellow "
+										+ player.getName() + "");
+						player.sendMessage(ChatColor.GOLD
+								+ "§6§l[§eColoredNameTags§6§l] §6Complete!");
+					} else if (!player.hasPermission("colorednametags.color")) {
+						player.sendMessage("§6§l[§eColoredNameTags§6§l] §cError: §4You do not have permission!");
+					}
+
+				} else if (args[0].equalsIgnoreCase("red")) {
+					if (player.hasPermission("colorednametags.color")) {
+						for (int index = 0; index < 20; index++) {
+							player.sendMessage(" ");
+						}
+						player.setPlayerListName(ChatColor.RED
+								+ player.getName());
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams add red");
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams option red color red");
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams join red " + player.getName()
+										+ "");
+						player.sendMessage(ChatColor.GOLD
+								+ "§6§l[§eColoredNameTags§6§l] §6Complete!");
+					} else if (!player.hasPermission("colorednametags.color")) {
+						player.sendMessage("§6§l[§eColoredNameTags§6§l] §cError: §4You do not have permission!");
+					}
+
+				} else if (args[0].equalsIgnoreCase("bold")) {
+					if (player.hasPermission("colorednametags.color")) {
+						for (int index = 0; index < 20; index++) {
+							player.sendMessage(" ");
+						}
+						player.setPlayerListName(ChatColor.BOLD
+								+ player.getName());
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams add bold");
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams option bold color bold");
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams join bold "
+										+ player.getName() + "");
+						player.sendMessage(ChatColor.GOLD
+								+ "§6§l[§eColoredNameTags§6§l] §6Complete!");
+					} else if (!player.hasPermission("colorednametags.color")) {
+						player.sendMessage("§6§l[§eColoredNameTags§6§l] §cError: §4You do not have permission!");
+					}
+
+				} else if (args[0].equalsIgnoreCase("italic")) {
+					if (player.hasPermission("colorednametags.color")) {
+						for (int index = 0; index < 20; index++) {
+							player.sendMessage(" ");
+						}
+						player.sendMessage(ChatColor.GOLD
+								+ "§6§l[§eColoredNameTags§6§l] §6Complete!");
+						player.setPlayerListName(ChatColor.ITALIC
+								+ player.getName());
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams add italic");
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams option italic color italic");
+						Bukkit.getServer().dispatchCommand(
+								Bukkit.getServer().getConsoleSender(),
+								"scoreboard teams join italic "
+										+ player.getName() + "");
+					} else if (!player.hasPermission("colorednametags.color")) {
+						player.sendMessage("§6§l[§eColoredNameTags§6§l] §cError: §4You do not have permission!");
+					}
+
+				} else if (args[0].equalsIgnoreCase("info")) {
+					for (int index = 0; index < 20; index++) {
+						player.sendMessage(" ");
+					}
+
+					player.sendMessage("§6§lInformation");
+					player.sendMessage(" ");
+					player.sendMessage("§7I have recently updated the plugin");
+					player.sendMessage("§7because of a small bug.  The plugin");
+					player.sendMessage("§7would only work without Essentials.");
+					player.sendMessage("§7But, we have fixed that problem, and now");
+					player.sendMessage("§7it changes the players tag.");
+
+				} else if (args[0].equalsIgnoreCase("test")) {
+					if (player.hasPermission("colorednametags.color")) {
+						getServer()
+								.broadcastMessage(
+										"This is a test. §1T§2E§3S§4T§5I§6N§7G §8C§9O§aL§cO§eR§dS§b! §r§lF§r§kO§r§oR§r§nM§rAT!");
+					} else if (!player.hasPermission("colorednametags.color")) {
+						player.sendMessage("§6§l[§eColoredNameTags§6§l] §cError: §4You do not have permission!");
+					}
+
+				}
+			}
+			return true;
+		}
+
+		return false;
+	}
+}
